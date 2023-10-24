@@ -14,6 +14,8 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		health_component.heal(5)
+	if Input.is_action_just_pressed("Buff 1"):
+		health_component.update_max_health(10)
 
 func _on_hitbox_component_area_entered(area):
 	if area.has_method("damage"):

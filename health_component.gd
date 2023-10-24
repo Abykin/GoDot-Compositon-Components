@@ -34,3 +34,4 @@ func take_damage(amount : int):
 
 func update_max_health(amount : int):
 	max_health += amount
+	on_health_change.emit("Max Health Increase")
