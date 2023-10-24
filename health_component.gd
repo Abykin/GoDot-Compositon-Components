@@ -1,4 +1,5 @@
 extends Node
+class_name HealthComponent
 
 # Health component is resposible for manageing all things related to health
 # Two Signals are Emitted
@@ -22,6 +23,7 @@ func heal(amount : int):
 	on_health_change.emit("Heal")
 
 func take_damage(amount : int):
+	print("taking dmg", amount)
 	current_health -= amount
 	current_health = max(0, current_health)
 	on_health_change.emit("Damage")
