@@ -1,17 +1,67 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdcti62pmw2fk"]
+[gd_scene load_steps=11 format=3 uid="uid://bdcti62pmw2fk"]
 
 [ext_resource type="Texture2D" uid="uid://bgdc0qhtdq16u" path="res://icon.svg" id="1_cgq56"]
 [ext_resource type="Script" path="res://player.gd" id="1_iy0fs"]
 [ext_resource type="PackedScene" uid="uid://d0jtuc7d8jdyg" path="res://health_component.tscn" id="3_ann67"]
 [ext_resource type="PackedScene" uid="uid://bb1el4mvrl5rp" path="res://hitbox_component.tscn" id="4_2kiex"]
+[ext_resource type="Texture2D" uid="uid://ddbbraot0cxfx" path="res://sword.png" id="5_qvwlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weh13"]
-size = Vector2(67, 55)
+size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgsur"]
-size = Vector2(251, 170)
+size = Vector2(150, 171)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmbpk"]
+size = Vector2(2.99284, 14.9327)
+
+[sub_resource type="Animation" id="Animation_60lqm"]
+resource_name = "sword_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword Position:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0472, 1.0472]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sword Position/Sword:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sword Position/Sword/Sword Attack Area/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n1qa1"]
+_data = {
+"sword_attack": SubResource("Animation_60lqm")
+}
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 16
 script = ExtResource("1_iy0fs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,8 +77,34 @@ collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_wgsur")
+
+[node name="Sword Position" type="Marker2D" parent="."]
+position = Vector2(91, 0)
+rotation = 1.0472
+
+[node name="Sword" type="Sprite2D" parent="Sword Position"]
+visible = false
+position = Vector2(56, 9)
+rotation = 1.5708
+scale = Vector2(3.48438, 4.21875)
+texture = ExtResource("5_qvwlt")
+metadata/_edit_lock_ = true
+
+[node name="Sword Attack Area" type="Area2D" parent="Sword Position/Sword"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword Position/Sword/Sword Attack Area"]
+position = Vector2(-2.43911, 0.366646)
+shape = SubResource("RectangleShape2D_qmbpk")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n1qa1")
+}
 
 [connection signal="on_health_change" from="HealthComponent" to="." method="_on_health_component_on_health_change"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="area_entered" from="Sword Position/Sword/Sword Attack Area" to="." method="_on_sword_attack_area_area_entered"]
