@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://de3veg2e7v74f"]
+
+[ext_resource type="Texture2D" uid="uid://bgdc0qhtdq16u" path="res://icon.svg" id="1_mbpac"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_ysvog"]
+[ext_resource type="PackedScene" uid="uid://d0jtuc7d8jdyg" path="res://health_component.tscn" id="2_4di8m"]
+[ext_resource type="PackedScene" uid="uid://bb1el4mvrl5rp" path="res://hitbox_component.tscn" id="3_sxrl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5ube"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8uca"]
+size = Vector2(154, 148)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7f2qv"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 67.69
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 5.0
+scale_max = 5.0
+color = Color(1, 0.341176, 0.341176, 1)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_ysvog")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.580392, 1, 1)
+texture = ExtResource("1_mbpac")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_4di8m")]
+max_health = 55
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c5ube")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_sxrl3")]
+collision_layer = 2
+collision_mask = 5
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_a8uca")
+
+[node name="HurtParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_7f2qv")
+lifetime = 0.5
+one_shot = true
+
+[connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
+[connection signal="on_health_change" from="HealthComponent" to="." method="_on_health_component_on_health_change"]
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
