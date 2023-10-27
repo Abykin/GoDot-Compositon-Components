@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# TODO handle taking damage and create an attack component.
+# TODO Add player stats as a resource
+
 @onready var health_component : HealthComponent = $HealthComponent
 @onready var sword_animation : AnimationPlayer = $AnimationPlayer
 
@@ -20,6 +23,8 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	Globals.player_pos = global_position
 	
 	move_and_slide()
 
