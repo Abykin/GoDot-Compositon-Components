@@ -37,7 +37,7 @@ texture = ExtResource("1_mbpac")
 [node name="HealthComponent" parent="." instance=ExtResource("2_4di8m")]
 max_health = 55
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c5ube")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_sxrl3")]
