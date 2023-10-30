@@ -20,10 +20,10 @@ sources/0 = SubResource("TileSetAtlasSource_qy01k")
 [node name="Test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_sufc3")]
-position = Vector2(257, 177)
+position = Vector2(229, 432)
 
 [node name="Enemy" parent="." instance=ExtResource("2_s1d2h")]
-position = Vector2(699, 244)
+position = Vector2(732, 432)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0v1rp")

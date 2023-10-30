@@ -28,5 +28,5 @@ func _on_hitbox_component_area_entered(area):
 		chase_player = true
 
 
-func _on_health_component_on_health_change(health_change_type):
+func _on_health_component_on_health_change(_health_change_type):
 	hurt_particles.emitting = true
