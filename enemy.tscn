@@ -58,3 +58,4 @@ one_shot = true
 [connection signal="on_death" from="HealthComponent" to="." method="_on_health_component_on_death"]
 [connection signal="on_health_change" from="HealthComponent" to="." method="_on_health_component_on_health_change"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="area_exited" from="HitboxComponent" to="." method="_on_hitbox_component_area_exited"]

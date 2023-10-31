@@ -24,6 +24,7 @@ texture = ExtResource("1_cgq56")
 shape = SubResource("RectangleShape2D_weh13")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_ann67")]
+vulnerability_time = 0.2
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_2kiex")]
 collision_mask = 2

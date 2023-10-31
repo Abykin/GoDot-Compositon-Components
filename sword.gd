@@ -1,6 +1,7 @@
 extends Marker2D
 
 signal sword_hit(area)
+signal attack_finished
 
 # Called when the node enters the scene tree for the first time.
 func sword_attack(direction):
@@ -13,3 +14,6 @@ func sword_attack(direction):
 
 func _on_sword_attack_area_area_entered(area):
 	sword_hit.emit(area)
+
+func on_attack_finished():
+	attack_finished.emit()

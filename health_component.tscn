@@ -4,3 +4,9 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_2iggx")
+
+[node name="VulnerableTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="VulnerableTimer" to="." method="_on_vulnerable_timer_timeout"]
