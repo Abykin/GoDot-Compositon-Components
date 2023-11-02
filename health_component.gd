@@ -15,7 +15,7 @@ signal on_health_change(health_change_type)
 @export var current_health : int
 @export var is_damaged : bool = false
 @export var is_vulnerable : bool = true
-@export var vulnerability_time : float = 0.0
+@export var vulnerability_time : float = 0.1
 
 func _ready():
 	current_health = max_health

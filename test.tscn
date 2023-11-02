@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6gyyfg3lvs4w"]
+[gd_scene load_steps=7 format=3 uid="uid://c6gyyfg3lvs4w"]
 
 [ext_resource type="PackedScene" uid="uid://bdcti62pmw2fk" path="res://player.tscn" id="1_sufc3"]
 [ext_resource type="PackedScene" uid="uid://de3veg2e7v74f" path="res://enemy.tscn" id="2_s1d2h"]
 [ext_resource type="Texture2D" uid="uid://n8ohig4p865d" path="res://Grass Block.png" id="3_u5lhv"]
+[ext_resource type="PackedScene" uid="uid://bk1t362a76aob" path="res://test_crate.tscn" id="4_j47xr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy01k"]
 texture = ExtResource("3_u5lhv")
@@ -23,9 +24,12 @@ sources/0 = SubResource("TileSetAtlasSource_qy01k")
 position = Vector2(229, 432)
 
 [node name="Enemy" parent="." instance=ExtResource("2_s1d2h")]
-position = Vector2(732, 432)
+position = Vector2(1077, 414)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_0v1rp")
 format = 2
 layer_0/tile_data = PackedInt32Array(2031617, 0, 0, 2031618, 0, 0, 2031619, 0, 0, 2031620, 0, 0, 2031621, 0, 0, 2031622, 0, 0, 2031623, 0, 0, 2031624, 0, 0, 2031625, 0, 0, 2031626, 0, 0, 2031627, 0, 0, 2031628, 0, 0, 2031629, 0, 0, 2031630, 0, 0, 2031631, 0, 0, 2031632, 0, 0, 2031633, 0, 0, 2031634, 0, 0, 2031635, 0, 0, 2031636, 0, 0, 2031637, 0, 0, 2031638, 0, 0, 2031642, 0, 0, 2031643, 0, 0, 2031644, 0, 0, 2031645, 0, 0, 2031646, 0, 0, 2031647, 0, 0, 2031648, 0, 0, 2031649, 0, 0, 2031650, 0, 0, 2031651, 0, 0, 2031652, 0, 0, 2031653, 0, 0, 2031654, 0, 0, 2031655, 0, 0, 2031656, 0, 0, 2031657, 0, 0, 2031658, 0, 0, 2031659, 0, 0, 2031660, 0, 0, 2031661, 0, 0, 2031662, 0, 0, 2031663, 0, 0, 2031664, 0, 0, 2031665, 0, 0, 2031666, 0, 0, 2031667, 0, 0, 2031668, 0, 0, 2031669, 0, 0, 2031670, 0, 0, 2031671, 0, 0, 2031672, 0, 0, 2031673, 0, 0, 2031674, 0, 0, 2031675, 0, 0, 2031676, 0, 0, 2031677, 0, 0, 2031678, 0, 0, 2031679, 0, 0, 2031680, 0, 0, 2031681, 0, 0, 2031682, 0, 0, 2031683, 0, 0, 2031684, 0, 0, 2031685, 0, 0, 2031686, 0, 0)
+
+[node name="TestCrate" parent="." instance=ExtResource("4_j47xr")]
+position = Vector2(744, 420)
