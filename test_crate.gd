@@ -3,7 +3,8 @@ extends Node2D
 @onready var interaction_component : InteractionComponent = $InteractionComponent
 
 
-const lines: Array[String] = [
+
+@export var lines: Array[String] = [
 	"Hey There!"
 ]
 

@@ -45,6 +45,8 @@ func _process(_delta):
 		health_component.update_max_health(10)
 	if Input.is_action_just_pressed("Buff 2") and is_attacking == false:
 		sword_attack()
+	if Input.is_action_just_pressed("Test Call"):
+		Globals.current_experience += 10
 
 	
 func _on_hitbox_component_area_entered(_area):

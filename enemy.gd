@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 @onready var hurt_particles : GPUParticles2D = $HurtParticles
 
+@export var experience_on_kill : int = 50
+
 const GRAVITY = 200
 const SPEED = 200
 var attack_power : int = 10
@@ -25,6 +27,7 @@ func _process(_delta):
 		attack(player_to_attack)
 
 func _on_health_component_on_death():
+	Globals.current_experience += experience_on_kill
 	queue_free()
 
 
@@ -39,7 +42,7 @@ func _on_health_component_on_health_change(_health_change_type):
 	hurt_particles.emitting = true
 
 
-func _on_hitbox_component_area_exited(area):
+func _on_hitbox_component_area_exited(_area):
 	player_to_attack = null
 	contact_damage = false
 	
