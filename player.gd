@@ -4,15 +4,17 @@ extends CharacterBody2D
 
 @onready var health_component : HealthComponent = $HealthComponent
 @onready var sword_scene = preload("res://sword.tscn")
-
+@onready var sword_cd = $SwordCD
+@onready var ability_bar : Control = $"CanvasLayer/Ability Bar"
 @export var stats: CharacterStats
 
 const SPEED = 300
-const JUMP_VELOCITY = -550.0
+const JUMP_VELOCITY = -600.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var attack_power : int = 15
 var last_direction : float = 1
 var is_attacking : bool = false
+var progress = 0
 
 func _ready():
 	print(stats.intelligence)
@@ -45,9 +47,12 @@ func _process(_delta):
 		health_component.update_max_health(10)
 	if Input.is_action_just_pressed("Buff 2") and is_attacking == false:
 		sword_attack()
+		sword_cd.start()
+		ability_bar.set_ability_bar(0.6*10)
 	if Input.is_action_just_pressed("Test Call"):
 		Globals.current_experience += 10
 
+	ability_bar.set_ability_bar_value(sword_cd.time_left*10)
 	
 func _on_hitbox_component_area_entered(_area):
 	pass

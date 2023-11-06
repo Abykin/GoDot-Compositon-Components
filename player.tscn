@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdcti62pmw2fk"]
+[gd_scene load_steps=9 format=3 uid="uid://bdcti62pmw2fk"]
 
 [ext_resource type="Texture2D" uid="uid://bgdc0qhtdq16u" path="res://icon.svg" id="1_cgq56"]
 [ext_resource type="Script" path="res://player.gd" id="1_iy0fs"]
 [ext_resource type="Resource" uid="uid://d1u3fvvumehco" path="res://character_stats.tres" id="2_7cuml"]
 [ext_resource type="PackedScene" uid="uid://d0jtuc7d8jdyg" path="res://health_component.tscn" id="3_ann67"]
 [ext_resource type="PackedScene" uid="uid://bb1el4mvrl5rp" path="res://hitbox_component.tscn" id="4_2kiex"]
+[ext_resource type="PackedScene" uid="uid://b5x4y7gdmqpdv" path="res://ability_bar.tscn" id="6_yuei3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weh13"]
 size = Vector2(128, 128)
@@ -41,6 +42,14 @@ position = Vector2(-90, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ability Bar" parent="CanvasLayer" instance=ExtResource("6_yuei3")]
+
+[node name="SwordCD" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
 
 [connection signal="on_health_change" from="HealthComponent" to="." method="_on_health_component_on_health_change"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

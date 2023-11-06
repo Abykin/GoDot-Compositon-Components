@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5x4y7gdmqpdv"]
+
+[ext_resource type="Texture2D" uid="uid://bgdc0qhtdq16u" path="res://icon.svg" id="1_fkj50"]
+[ext_resource type="Script" path="res://ability_bar.gd" id="1_yx4qh"]
+
+[node name="Ability Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yx4qh")
+
+[node name="Ability 1" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+max_value = 60.0
+value = 11.0
+texture_under = ExtResource("1_fkj50")
+texture_progress = ExtResource("1_fkj50")
+tint_over = Color(0.113725, 0.196078, 0.2, 1)
+tint_progress = Color(0.490196, 0.490196, 0.490196, 1)
+
+[node name="Label" type="Label" parent="Ability 1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "Basic Attack"
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 3
+text = "C"
+horizontal_alignment = 1
+vertical_alignment = 1
