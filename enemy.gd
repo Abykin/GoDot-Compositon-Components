@@ -13,6 +13,9 @@ var chase_player : bool = false
 var contact_damage : bool = false
 var player_to_attack : Area2D
 
+func _ready():
+	pass
+
 func _physics_process(delta):
 	velocity.y += delta * GRAVITY
 	
@@ -35,7 +38,7 @@ func _on_hitbox_component_area_entered(area):
 	if area.has_method("damage"):
 		player_to_attack = area
 		contact_damage = true
-		chase_player = false
+		chase_player = true
 
 
 func _on_health_component_on_health_change(_health_change_type):
@@ -48,3 +51,7 @@ func _on_hitbox_component_area_exited(_area):
 	
 func attack(area):
 	area.damage(attack_power)
+
+
+func _on_hitbox_component_on_damage_taken():
+	chase_player = true

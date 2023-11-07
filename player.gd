@@ -18,6 +18,7 @@ var progress = 0
 
 func _ready():
 	print(stats.intelligence)
+	Globals.player = self
 
 func _physics_process(delta):
 	if not is_on_floor():

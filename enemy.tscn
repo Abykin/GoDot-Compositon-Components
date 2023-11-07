@@ -27,7 +27,7 @@ color = Color(1, 0.341176, 0.341176, 1)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 17
+collision_mask = 528
 script = ExtResource("1_ysvog")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -59,3 +59,4 @@ one_shot = true
 [connection signal="on_health_change" from="HealthComponent" to="." method="_on_health_component_on_health_change"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="area_exited" from="HitboxComponent" to="." method="_on_hitbox_component_area_exited"]
+[connection signal="on_damage_taken" from="HitboxComponent" to="." method="_on_hitbox_component_on_damage_taken"]

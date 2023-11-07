@@ -11,9 +11,12 @@ extends Node
 			current_experience = 0
 			player_stats.level += 1
 		show_information()
-		
+
+
 
 @export var maximum_experience : int = 50
+
+var player : CharacterBody2D
 
 func _ready():
 	current_experience = player_stats.current_experience
