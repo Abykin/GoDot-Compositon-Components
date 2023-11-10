@@ -15,10 +15,12 @@ var attack_power : int = 15
 var last_direction : float = 1
 var is_attacking : bool = false
 var progress = 0
+var inventory : Inventory
 
 func _ready():
 	print(stats.intelligence)
 	Globals.player = self
+	inventory = Inventory.new()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -50,6 +52,9 @@ func _process(_delta):
 		sword_attack()
 		sword_cd.start()
 		ability_bar.set_ability_bar(0.6*10)
+		var item = Item.new("Sword", "A sharp sword.")
+		inventory.add_item(item)
+		print(inventory.retrieve_item("Sword"))
 	if Input.is_action_just_pressed("Test Call"):
 		Globals.current_experience += 10
 
