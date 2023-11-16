@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdcti62pmw2fk"]
+[gd_scene load_steps=11 format=3 uid="uid://bdcti62pmw2fk"]
 
 [ext_resource type="Texture2D" uid="uid://bgdc0qhtdq16u" path="res://icon.svg" id="1_cgq56"]
 [ext_resource type="Script" path="res://player.gd" id="1_iy0fs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://b4hltnlph4ar3" path="res://Inventory/playerinv.tres" id="3_bw5bk"]
 [ext_resource type="PackedScene" uid="uid://bb1el4mvrl5rp" path="res://hitbox_component.tscn" id="4_2kiex"]
 [ext_resource type="PackedScene" uid="uid://b5x4y7gdmqpdv" path="res://ability_bar.tscn" id="6_yuei3"]
+[ext_resource type="PackedScene" uid="uid://b6yeinei08572" path="res://Inventory/inventory_ui.tscn" id="8_khkrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_weh13"]
 size = Vector2(128, 128)
@@ -52,6 +53,14 @@ zoom = Vector2(0.5, 0.5)
 [node name="SwordCD" type="Timer" parent="."]
 wait_time = 0.6
 one_shot = true
+
+[node name="InventoryUI" parent="." instance=ExtResource("8_khkrq")]
+z_index = 10
+offset_left = -204.0
+offset_top = -397.0
+offset_right = -122.0
+offset_bottom = -335.0
+scale = Vector2(5, 5)
 
 [connection signal="on_health_change" from="HealthComponent" to="." method="_on_health_component_on_health_change"]
 [connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
