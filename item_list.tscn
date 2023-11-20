@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdg31t2pitagq"]
+
+[ext_resource type="Texture2D" uid="uid://d23ej5nbls1wb" path="res://Textures/Apple.png" id="1_tty8q"]
+[ext_resource type="Texture2D" uid="uid://ddbbraot0cxfx" path="res://sword.png" id="2_irjby"]
+[ext_resource type="Script" path="res://item_list.gd" id="3_i53qy"]
+
+[node name="ItemList" type="ItemList"]
+offset_right = 442.0
+offset_bottom = 264.0
+item_count = 2
+max_columns = 4
+same_column_width = true
+icon_mode = 0
+item_0/text = ""
+item_0/icon = ExtResource("1_tty8q")
+item_1/text = ""
+item_1/icon = ExtResource("2_irjby")
+script = ExtResource("3_i53qy")
